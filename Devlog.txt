@@ -1,0 +1,27 @@
+Log of thoughts
+
+1) What queries would be needed to produce the graphs - what database would support them.
+
+Task is
+
+"create an application that helps users decide on what day
+and at what time of day a flight should be booked at in order to avoid
+delays for a given pair of origin and destination airports"
+
+2) interpreting this as user will be required to
+- select a pair of airports, then graphs will be shown
+
+"A bar chart of the flight delays" - Question - what precisely is "the flight delays" - 
+should this graph be number of flights that were delayed by hour? (time period) if so would that 
+not artificially make times with more total flights look better.
+
+"a bar chart of the flight delay ratios" - IS this a bar of how many flights vs delay ratio in various bands,
+or average delay ratio vs day and hour
+
+Need to ask this. However in terms of database choice that means ideally the database should support
+
+- filtering by equality and comparison
+- grouping on equality and comparison
+- aggregate functions on groups, and overall.
+
+The usual choice for working with node seems to be mongo => google what this supports.
