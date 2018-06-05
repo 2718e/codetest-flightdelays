@@ -25,3 +25,15 @@ Need to ask this. However in terms of database choice that means ideally the dat
 - aggregate functions on groups, and overall.
 
 The usual choice for working with node seems to be mongo => google what this supports.
+
+...
+
+shallow look indicates that it would. (also starting to wonder if the exercise was inspired by 
+this https://www.mongodb.com/presentations/mongodb-analytics-learn-aggregation-example-exploratory-analytics-and-visualization?jmp=docs which was linked off the mongodb docs :) )
+
+...
+
+Question - should I use typesript
+
+Answer - probably not - trying to build both a client and server application at the same time looks to have complications, and not worth
+the benefits for a small project and when trying to spend a maximum of 8 hours.
