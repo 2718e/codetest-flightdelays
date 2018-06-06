@@ -4,11 +4,17 @@ const config = require('config')
 
 const port = config.get('appSettings.port')
 
-const app = express()
+async function start () {
 
-const flightDelayRouter = routes.makeRouter()
-app.use('/', flightDelayRouter)
 
-app.listen(port, () => {
-  console.log('app listening on port ' + port)
-})
+  const app = express()
+
+  const flightDelayRouter = await routes.makeRouter()
+  app.use('/', flightDelayRouter)
+
+  app.listen(port, () => {
+    console.log('app listening on port ' + port)
+  })
+}
+
+start()

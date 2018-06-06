@@ -1,12 +1,17 @@
 const express = require('express')
+const {makeParcelBundler} = require ('./parcelsetup')
 
-function makeRouter () {
+
+async function makeRouter () {
   const router = express.Router()
-  router.use(express.json())
-
+  const bundler = await makeParcelBundler()
+  
   router.get('/helloworld', (req, res) => {
     res.send('OMG HI!! :)')
   })
+
+  router.use('/',bundler.middleware())
+
   return router
 }
 

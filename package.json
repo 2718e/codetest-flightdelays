@@ -10,6 +10,12 @@
   "license": "UNLICENSED",
   "dependencies": {
     "config": "^1.30.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "parcel-bundler": "^1.8.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.1"
   }
 }

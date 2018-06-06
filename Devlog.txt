@@ -37,3 +37,5 @@ Question - should I use typesript
 
 Answer - probably not - trying to build both a client and server application at the same time looks to have complications, and not worth
 the benefits for a small project and when trying to spend a maximum of 8 hours.
+
+that said, maybe worth trying it with parcel bundler
