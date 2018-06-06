@@ -39,3 +39,14 @@ Answer - probably not - trying to build both a client and server application at 
 the benefits for a small project and when trying to spend a maximum of 8 hours.
 
 that said, maybe worth trying it with parcel bundler
+
+...
+
+parcel seems to work pretty well even with typescript although concern is this means currently only have a dev build and no production build, should be fine for a coding challenge though.
+
+Should typescript be used both on client and server - probably - but could convert typescript later
+
+...
+
+More thoughts on db if filtering to an airport pair would want a combined index on them - does mongo support indexes - yes :) Still ok to use it :)
+

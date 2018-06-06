@@ -6,8 +6,12 @@ async function makeRouter () {
   const router = express.Router()
   const bundler = await makeParcelBundler()
   
-  router.get('/helloworld', (req, res) => {
-    res.send('OMG HI!! :)')
+  router.get('/test', async (req, res) => {
+    const {from, to} = req.query
+    res.send( {
+      departure: from,
+      arrival: to
+    })
   })
 
   router.use('/',bundler.middleware())

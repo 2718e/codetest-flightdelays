@@ -4,7 +4,8 @@
   "description": "implentation of a code test to analyze flight delays",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./node_modules/nodemon/bin/nodemon.js ./server.js"
   },
   "author": "Dan",
   "license": "UNLICENSED",
@@ -16,6 +17,7 @@
     "react-dom": "^16.4.0"
   },
   "devDependencies": {
+    "nodemon": "^1.17.5",
     "typescript": "^2.9.1"
   }
 }

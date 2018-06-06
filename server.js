@@ -6,7 +6,6 @@ const port = config.get('appSettings.port')
 
 async function start () {
 
-
   const app = express()
 
   const flightDelayRouter = await routes.makeRouter()
