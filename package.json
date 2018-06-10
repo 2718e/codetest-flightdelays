@@ -10,15 +10,18 @@
   "author": "Dan",
   "license": "UNLICENSED",
   "dependencies": {
+    "chart.js": "^2.7.2",
     "config": "^1.30.0",
     "csv-parse": "^2.5.0",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "mobx": "^4.3.1",
     "mobx-react": "^5.2.0",
     "moment": "^2.22.2",
     "parcel-bundler": "^1.8.1",
     "postcss-modules": "^1.1.0",
     "react": "^16.4.0",
+    "react-chartjs-2": "^2.7.2",
     "react-dom": "^16.4.0"
   },
   "devDependencies": {

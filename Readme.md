@@ -17,3 +17,11 @@ Notes
 ## Roadmap
 
 The application is still in development. But wanted to publish in github right from it being a skeleton app.
+
+## Improvements and concerns
+
+Some notes while developing around things I'm not fully satisfied with, but prioritized getting the application functional quickly over fixing
+
+- do we need to validate the requests for chart data
+- should style the app
+- should probably use a 3rd party component for the airport selector with autocomplete, as it is currently missing being able to select with arrows, manually closing popup, etc.

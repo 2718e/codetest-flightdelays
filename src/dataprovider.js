@@ -1,6 +1,7 @@
 const parse = require('csv-parse')
 const fs = require('fs')
 const moment = require('moment')
+const _ = require('lodash')
 
 class DataRecord {
 
@@ -13,13 +14,13 @@ class DataRecord {
     this.distanceMiles = Number(csvRow[7])
   }
 
-
 }
 
 class DataProvider {
 
   constructor() {
     this.records = []
+    this.airports = []
   }
 
   async load(pathToCsvFile) {
@@ -31,7 +32,10 @@ class DataProvider {
             this.records.push(new DataRecord(csvrow))
           }
         })
-        .on('end', () => resolve())
+        .on('end', () => {
+          this.airports = this.computeAirportsList()
+          resolve()
+        })
     })
   }
 
@@ -39,8 +43,39 @@ class DataProvider {
     return this.records[index]
   }
 
-  getAllAirports(){
-    const arrDepConcat = this.records.map(r=>r.origin).concat(this.records.map(r=>r.destination))
+  getAllAirports() {
+    return this.airports
+  }
+
+  computeStatsForGroups(grouping, allowedDelay) {
+    return _.map(grouping, (group, key) => {
+      const numDelays = group.filter(record => record.arrivalDelay > allowedDelay).length
+      return { key: key, nDelayed: numDelays, nDataPoints: group.length }
+    })
+  }
+
+  getStatsFor(origin, dest, day, allowedDelay) {
+    const relevant = this.records.filter(r => r.origin === origin && r.destination === dest)
+    if (relevant.length === 0) {
+      return {
+        statsByDay: "No data",
+        statsByHour: "No data"
+      }
+    }
+    const byDay = _.groupBy(relevant, record => record.flightDate.day())
+    const statsByDay = this.computeStatsForGroups(byDay, allowedDelay)
+    // if day is -1 want have all days, otherwise limit to the selected day for hourly chart
+    const datasetForByHour = day < 0 ? relevant : relevant.filter(record => record.flightDate.day() === day)
+    const byHour = _.groupBy(datasetForByHour, record => record.flightDate.hour())
+    const statsByHour = this.computeStatsForGroups(byHour, allowedDelay)
+    return {
+      statsByDay: statsByDay,
+      statsByHour: statsByHour
+    }
+  }
+
+  computeAirportsList() {
+    const arrDepConcat = this.records.map(r => r.origin).concat(this.records.map(r => r.destination))
     return Array.from(new Set(arrDepConcat)).sort() // convert to set to get unique values
   }
 

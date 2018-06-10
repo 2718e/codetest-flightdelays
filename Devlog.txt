@@ -73,3 +73,5 @@ How to do styling - would ideally like to use css modules but setting this up wi
 
 Thought - really should have used a third party component for suggestion lists. The amount of work to make it usable is way more than anticipated
 
+(ie. when should it close, responding to key events, styling)
+
