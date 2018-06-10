@@ -50,3 +50,26 @@ Should typescript be used both on client and server - probably - but could conve
 
 More thoughts on db if filtering to an airport pair would want a combined index on them - does mongo support indexes - yes :) Still ok to use it :)
 
+...
+
+Actually though - is a db needed at all - dataset has around 100000 records - which isn't that big for a computer.
+Also concerned including a db would end up meaning when I submit the technical test, they have to configure a db connection to use it,
+and would I lose marks for it being difficult to set up and run - even if using a database may technically be a better solution.
+And it *might* be faster to write without db (not necessarily though)
+
+Lets try without and see how it goes.
+
+...
+
+Do we need the Arrival time if we are given both the delay and elapsed time? -
+lets combine CRS departure time and date and make some sort of datetime object (moment)
+
+...
+
+How to do styling - would ideally like to use css modules but setting this up with typescript is a bit hacky -
+- possibly could just use a standard stylesheet and set the names.
+
+...
+
+Thought - really should have used a third party component for suggestion lists. The amount of work to make it usable is way more than anticipated
+
