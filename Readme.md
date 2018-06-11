@@ -14,14 +14,23 @@ Notes
 - npm run dev runs the backend code under nodemon and watches for changes. 
 - The Parcel module bundler is called by the server side code in order to automatically watch and bundle the client side code.
 
+### Browser compatibility
+
+Should work on
+- Chrome / opera
+- Firefox
+
 ## Roadmap
 
 The application is still in development. But wanted to publish in github right from it being a skeleton app.
 
-## Improvements and concerns
+### Things cut due to time
 
-Some notes while developing around things I'm not fully satisfied with, but prioritized getting the application functional quickly over fixing
+Some things I would have wanted to do to had I more time
 
-- do we need to validate the requests for chart data
-- should style the app
-- should probably use a 3rd party component for the airport selector with autocomplete, as it is currently missing being able to select with arrows, manually closing popup, etc.
+- Validate the requests for chart data
+- Use a 3rd party component for the airport selector with autocomplete, as it is currently missing being able to select with arrows, manually closing popup, etc.
+- Have the suggestion list for the Destination airport be limited to those where there is data for at least one flight from the origin to the destination
+- Make clicking on a bar in the day chart automatically set the filter limiting to that day.
+- Have a production build configuration instead of just dev
+- Use typescript on both the server and client side and share the shape of parameters to and from the rest api with interfaces.

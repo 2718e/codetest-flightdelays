@@ -18,3 +18,7 @@ export async function postFetch(url, payload) {
 export function nameOfDay(numberOfDay: number) {
   return (moment as any).default().day(numberOfDay).format("dddd")
 }
+
+export function format24Hour(hour: number, minutes: number) {
+  return (moment as any).default().hour(hour).minutes(minutes).format("HHmm")
+}
