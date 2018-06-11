@@ -58,13 +58,12 @@ class DataProvider {
     const relevant = this.records.filter(r => r.origin === origin && r.destination === dest)
     if (relevant.length === 0) {
       return {
-        statsByDay: "No data",
-        statsByHour: "No data"
+        error: "No data for selected airport pair"
       }
     }
     const byDay = _.groupBy(relevant, record => record.flightDate.day())
     const statsByDay = this.computeStatsForGroups(byDay, allowedDelay)
-    // if day is -1 want have all days, otherwise limit to the selected day for hourly chart
+    // if day is -1 want all days, otherwise limit to the selected day for hourly chart
     const datasetForByHour = day < 0 ? relevant : relevant.filter(record => record.flightDate.day() === day)
     const byHour = _.groupBy(datasetForByHour, record => record.flightDate.hour())
     const statsByHour = this.computeStatsForGroups(byHour, allowedDelay)

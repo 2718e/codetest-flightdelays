@@ -37,8 +37,8 @@ export class DaySelectorState {
 
 export const DaySelector = observer((props: IDaySelectorProps) => {
   return <div>
-    <div>Day of Week (for hourly charts)</div>
-    <select value={props.state.selectedDay.get().code} onChange={props.state.handleChange}>
+    <div className="form-label" >Day of Week (for hourly charts)</div>
+    <select className="form-select" value={props.state.selectedDay.get().code} onChange={props.state.handleChange}>
       {dayOptions.map(dayData => <option key={dayData.code} value={dayData.code} >{dayData.name}</option>)}
     </select>
   </div>

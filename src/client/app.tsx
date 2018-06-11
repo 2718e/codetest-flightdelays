@@ -6,12 +6,14 @@ import { observer } from 'mobx-react'
 import { autorun } from 'mobx'
 import { postFetch } from './clienthelpers'
 import { ChartShower } from './components/chartshower';
+import { DummyNav } from './components/topbar';
 
 const data = new DataCache()
 const filterState = new FilterControlsState()
 autorun(() => data.refreshChartData(filterState.filterSet.get()))
 
 const AppRoot = observer( () => <div>
+  <DummyNav />
   <FilterControls store={data} state={filterState} />
   <ChartShower fGetStats={()=>data.chartData.get()} />
 </div>)

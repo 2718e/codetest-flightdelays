@@ -25,11 +25,46 @@ function formatDayStats(dayStats: any) {
     datasets: [
       {
         label: "% flights delayed",
-        data: dayNumbers.map(n => data[n] || 0)
+        data: dayNumbers.map(n => data[n] || 0),
+        backgroundColor: '#007FFF88',
+        borderColor: '#007FFFDD'
       }
     ]
   }
   return result
+}
+
+function formatHourlyStats(hourStats: any) {
+  const hours =  hourStats.map(hourData => hourData.key)
+  const data = hourStats.map(hourData => {
+    if (hourData.nDataPoints > 0) {
+      return 100 * hourData.nDelayed / hourData.nDataPoints
+    } 
+    return 0
+  })
+  const result = {
+    labels: hours,
+    datasets: [
+      {
+        label: "% flights delayed",
+        data: data,
+        backgroundColor: '#007FFF88',
+        borderColor: '#007FFFDD'
+      }
+    ]
+  }
+  return result
+}
+
+const chartOptions = {
+  title: {
+    display: true,
+    text: '% of flights delayed by more than 1 minute',
+    fontSize: 16
+  },
+  legend: {
+    display: false
+  }
 }
 
 export const ChartShower = observer((props: IChartShowerProps) => {
@@ -40,11 +75,23 @@ export const ChartShower = observer((props: IChartShowerProps) => {
   }
   if (stats.statsByDay) {
     const formattedData = formatDayStats(stats.statsByDay)
-    thingsToShow.push(<div key="daychart">
-      <Bar data={formattedData} width={600} height={250} />
+    thingsToShow.push(<div className="col-xl-12 col-6" key="daychart">
+      <Bar data={formattedData} options={chartOptions}/>
     </div>)
   }
-  return <div className="chart-shower">{thingsToShow}</div>
+  if (stats.statsByHour) {
+    const formattedData = formatHourlyStats(stats.statsByHour)
+    thingsToShow.push(<div className="col-xl-12 col-6" key="hourchart">
+      <Bar data={formattedData} options={chartOptions}/>
+    </div>)
+  }
+  return <div className="chart-shower">
+    <div className="container">
+      <div className="columns">
+        {thingsToShow}
+      </div>
+    </div>
+  </div>
 
 
 })

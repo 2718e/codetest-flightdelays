@@ -35,8 +35,8 @@ export const AirportSelector = observer((props: AirportSelectorProps) => {
 
 
   return <div className="airport-selector">
-    <div>{props.title}</div>
-    <input value={text.get()}
+    <div className="form-label" >{props.title}</div>
+    <input className="form-input" value={text.get()}
       {...changeHandler((s: string) => text.set(s))} />
     {suggestionList}
   </div>
