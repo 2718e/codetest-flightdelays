@@ -13,16 +13,13 @@ Steps
 Notes
 - npm run dev runs the backend code under nodemon and watches for changes. 
 - The Parcel module bundler is called by the server side code in order to automatically watch and bundle the client side code.
+- Many airport pairs don't have data, a par that does is Depart from: LAX, Arrive at: DTW
 
 ### Browser compatibility
 
 Should work on
 - Chrome / opera
-- Firefox
-
-## Roadmap
-
-The application is still in development. But wanted to publish in github right from it being a skeleton app.
+- Firefox.
 
 ### Things cut due to time
 

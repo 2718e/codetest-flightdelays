@@ -16,8 +16,6 @@ export class FilterControlsState {
     this.originSelectorState = new AirportSelectorState()
     this.destinationSelectorState = new AirportSelectorState()
     this.daySelectorState = new DaySelectorState()
-    this.originSelectorState.enteredText.set('LAX')
-    this.destinationSelectorState.enteredText.set('DTW')
   }
 
   filterSet : IComputedValue<IFilterOptions> = computed(() => {
